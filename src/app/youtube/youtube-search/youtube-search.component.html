@@ -1,10 +1,16 @@
-<div>
-  <h1>Your Search</h1>
-  <input #title type="text" placeholder="search here">
+<form>
+  <input #title type="text" placeholder="search here" >
   <button type="button" (click)="getData()">SEARCH</button>
-  <div *ngFor="let channel of channels">
-    <a target="_blank" href="https://www.youtube.com/channel/{{channel.id.channelId}}">
-      {{ channel.snippet.channelTitle }}
+</form>
+<div *ngIf="channels; else loading">
+  <div *ngFor="let channel of channels" class="show">
+    <a target="_blank" href="https://www.youtube.com/watch?v={{ channel.id.videoId }} &ab_channel={{ channel.snippet.channelTitle}}">
+      {{ channel.snippet.title }} <br>
+      <img src="{{ channel.snippet.thumbnails.high.url }}" alt="">
     </a>
   </div>
 </div>
+
+<ng-template #loading>
+  <h1>Loading....</h1>
+</ng-template>

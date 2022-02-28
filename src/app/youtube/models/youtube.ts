@@ -1,6 +1,6 @@
 import { date, datetime , etag, integer} from './common'
 
-export type youtube = {
+export type youtubeResoruce = {
   "kind": "youtube#searchResult",
   "etag": etag,
   "id": {
@@ -15,7 +15,7 @@ export type youtube = {
     "title": string,
     "description": string,
     "thumbnails": {
-      (key:any): {
+      (key:string): {
         "url": string,
         "width": integer,
         "height": integer
@@ -24,6 +24,22 @@ export type youtube = {
     "channelTitle": string,
     "liveBroadcastContent": string
   }
+}
+
+export type youtubeList =
+{
+  "kind": "youtube#searchListResponse",
+  "etag": etag,
+  "nextPageToken": string,
+  "prevPageToken": string,
+  "regionCode": string,
+  "pageInfo": {
+    "totalResults": integer,
+    "resultsPerPage": integer
+  },
+  "items": [
+    youtubeResoruce
+  ]
 }
 
 

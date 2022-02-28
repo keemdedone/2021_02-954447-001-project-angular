@@ -23,7 +23,6 @@ export class YoutubeSearchComponent implements OnInit {
 
   getData(){
     var title = this.title.nativeElement.value
-
     this.youtubeService.getResult(title).subscribe((data) => {
       this.channels = data.items;
     })

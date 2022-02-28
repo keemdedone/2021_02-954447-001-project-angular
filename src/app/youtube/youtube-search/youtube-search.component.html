@@ -1,0 +1,10 @@
+<div>
+  <h1>Your Search</h1>
+  <input #title type="text" placeholder="search here">
+  <button type="button" (click)="getData()">SEARCH</button>
+  <div *ngFor="let channel of channels">
+    <a target="_blank" href="https://www.youtube.com/channel/{{channel.id.channelId}}">
+      {{ channel.snippet.channelTitle }}
+    </a>
+  </div>
+</div>

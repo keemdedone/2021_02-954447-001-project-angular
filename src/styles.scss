@@ -35,5 +35,12 @@ $my-project-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+body { margin: 30px 0px 0px 30px; font-family: Roboto, "Helvetica Neue", sans-serif; }

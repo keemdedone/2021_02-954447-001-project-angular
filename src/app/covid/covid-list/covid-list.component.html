@@ -1,0 +1,30 @@
+<div *ngIf="data; else loading">
+  <div *ngFor="let item of data.results">
+    <label>
+      ยอดติดเชื้อรายวัน
+      <code>{{ item.new_case }}</code>
+    </label> <br>
+    <label>
+      ติดเชื้อสะสมทั่วประเทศ
+      <code>{{ item.total_case }}</code>
+    </label><br>
+    <label>
+      ยอดผู้เสียชีวิตรายวัน
+      <code>{{ item.new_death }}</code>
+    </label><br>
+    <label>
+      ยอดเสียชีวิตทั้งหมด
+      <code>{{ item.total_death }}</code>
+    </label><br>
+    <label>
+      ยอดรวมผู้ที่รักษาหาย
+      <code>{{ item.total_recovered }}</code>
+    </label>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div>
+    <h1>กำลังดาวน์โหลดข้อมูล....</h1>
+  </div>
+</ng-template>

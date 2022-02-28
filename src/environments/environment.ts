@@ -7,7 +7,9 @@ export const environment = {
   googleConfiguration: {
     client_id: '989210212784-2cmbma21cht0a1aev6o84shrgabr8map.apps.googleusercontent.com',
     client_secret: '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',
-    scopes: [],
+    scopes: [
+      'https://www.googleapis.com/auth/classroom.courses'
+    ],
     redirect_uri:
       'https://camt-mmit.github.io/2021_02-954447-001-project-angular/google/authorization',
   },

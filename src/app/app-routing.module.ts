@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'covid', pathMatch: 'full' },
   {
-    path:'',
-    redirectTo:'youtube',
-    pathMatch:'full',
+    path:'api',
+    loadChildren: () => import('./api/api.module').then((m) => m.ApiModule)
   },
   {
-    path:'youtube',loadChildren: () => import('./youtube/youtube.module').then((x) => x.YoutubeModule)
+    path: 'covid',
+    loadChildren: () => import('./covid/covid.module').then((m) => m.CovidModule),
   },
 ];
 

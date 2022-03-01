@@ -4,7 +4,7 @@ import { map, Observable, of, switchMap } from 'rxjs';
 import { GoogleTokenService } from './google-token.service';
 import { coursesList, parseCoursesList } from './models';
 
-const URL = 'https://classroom.googleapis.com/v1/courses?pageSize=1';
+const URL = 'https://classroom.googleapis.com/v1/courses';
 
 @Injectable({
   providedIn: 'root'

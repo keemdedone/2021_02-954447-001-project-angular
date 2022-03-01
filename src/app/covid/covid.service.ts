@@ -17,6 +17,7 @@ export class CovidService {
   getAll(): Observable<List<Covid>> {
     return this.http
       .get(COVID_URL)
-      .pipe(map((data) => parseCovidList(data)));
+      .pipe(map((data) => parseCovidList(data))
+    );
   }
 }

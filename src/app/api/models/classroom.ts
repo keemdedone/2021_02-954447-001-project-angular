@@ -136,6 +136,7 @@ export function parseClassroom(data: any): classroom {
 }
 
 export function parseCoursesList(data: any): coursesList {
+  console.log(data)
   return {
     ...data,
     courses: (data?.courses || []).map((data: any) => parseClassroom(data)),

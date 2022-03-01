@@ -34,7 +34,6 @@ export function parseResult(data : any) : any & {
 export function parseCovid(data: any) : Covid {
   return {
     ...parseResult(data),
-    total_case: data.total_case,
   }
 }
 

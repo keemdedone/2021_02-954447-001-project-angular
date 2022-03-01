@@ -8,7 +8,8 @@ export const environment = {
     client_id: '989210212784-2cmbma21cht0a1aev6o84shrgabr8map.apps.googleusercontent.com',
     client_secret: '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',
     scopes: [
-      'https://www.googleapis.com/auth/classroom.courses'
+      'https://www.googleapis.com/auth/classroom.courses',
+      'https://www.googleapis.com/auth/classroom.courses.readonly'
     ],
     redirect_uri:
       'http://localhost:4200/api/authorization',

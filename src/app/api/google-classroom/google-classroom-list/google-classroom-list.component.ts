@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { coursesList } from '../../models';
 
 @Component({
   selector: 'app-google-classroom-list',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./google-classroom-list.component.scss']
 })
 export class GoogleClassroomListComponent implements OnInit {
+  @Input() data: coursesList | null = null ;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data)
+    return;
   }
 
 }

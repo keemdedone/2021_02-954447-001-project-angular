@@ -5,6 +5,7 @@ export const environment = {
     client_secret: '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',
     scopes: [
       'https://www.googleapis.com/auth/classroom.courses',
+      'https://www.googleapis.com/auth/classroom.courses.readonly',
     ],
     redirect_uri:
       'https://camt-mmit.github.io/2021_02-954447-001-project-angular/api/authorization',

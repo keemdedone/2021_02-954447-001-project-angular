@@ -39,7 +39,6 @@ export function parseCovid(data: any) : Covid {
 }
 
 export function parseCovidList(data: any) : List<Covid>{
-  console.log(data)
   return{
     ...parseList(data),
     results: data,

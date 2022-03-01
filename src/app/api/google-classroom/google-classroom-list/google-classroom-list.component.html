@@ -1,1 +1,9 @@
-<p>google-classroom-list works!</p>
+<div *ngIf="data; else loading">
+  <div *ngFor="let course of data.courses">
+    <label>{{course.name}}</label>
+  </div>
+</div>
+
+<ng-template #loading>
+  <h1>LOADING...</h1>
+</ng-template>

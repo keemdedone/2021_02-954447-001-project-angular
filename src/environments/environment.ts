@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   googleConfiguration: {
     client_id: '989210212784-2cmbma21cht0a1aev6o84shrgabr8map.apps.googleusercontent.com',
     client_secret: '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',
@@ -11,7 +11,7 @@ export const environment = {
       'https://www.googleapis.com/auth/classroom.courses'
     ],
     redirect_uri:
-      'https://camt-mmit.github.io/2021_02-954447-001-project-angular/google/authorization',
+      'http://localhost:4200/api/authorization',
   },
 };
 

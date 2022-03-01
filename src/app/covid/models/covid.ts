@@ -3,7 +3,7 @@ export type List<T> = {
 };
 
 export type Covid = {
-  txn_date: Date;
+  txn_date: string;
   province: string;
   new_case: number;
   total_case: number;
@@ -13,18 +13,36 @@ export type Covid = {
   total_death: number;
   new_recovered: number;
   total_recovered: number;
-  update_date: Date;
+  update_date: string;
 };
 
-//covid
-export function parseProvinceList(data: any): List<Covid> {
-  return {
-    results: data,
-  };
+export function parseList(data : any) : List<unknown> {
+  return{
+    ...data,
+  }
 }
 
-export function parseCovid(data: any): Covid {
+export function parseResult(data : any) : any & {
+  txn_date: Date,
+  update_date: Date }{
+    return {
+      ...data
+    }
+  }
+
+//COVID
+export function parseCovid(data: any) : Covid {
   return {
-    ...data,
-  };
+    ...parseResult(data),
+    total_case: data.total_case,
+  }
 }
+
+export function parseCovidList(data: any) : List<Covid>{
+  console.log(data)
+  return{
+    ...parseList(data),
+    results: data,
+  }
+}
+

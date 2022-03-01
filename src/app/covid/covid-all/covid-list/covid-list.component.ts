@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { CovidService } from '../covid.service';
-import { Covid, List } from '../models/covid';
-import { provinces } from '../models/provinces';
+import { Covid, List } from '../../models/covid';
+
 
 @Component({
   selector: 'app-covid-list',
@@ -13,7 +11,7 @@ export class CovidListComponent implements OnInit {
   @Input() data: List<Covid> | null = null;
 
   ngOnInit(): void {
-    return;
+    return
   }
 
 }

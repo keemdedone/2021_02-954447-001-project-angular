@@ -1,0 +1,12 @@
+<div>
+  <ul>
+    <li><a routerLink="list">List</a></li>
+    <li><a routerLink="create">Create</a></li>
+  </ul>
+</div>
+<ng-container [ngSwitch]="tokenReady$ | async">
+  <div *ngSwitchCase="false">
+    <a [href]="authorizationLinks$ | async">Login Google</a>
+  </div>
+  <router-outlet *ngSwitchCase="true"></router-outlet>
+</ng-container>

@@ -7,6 +7,6 @@ export const environment = {
       'https://www.googleapis.com/auth/classroom.courses',
     ],
     redirect_uri:
-      'https://camt-mmit.github.io/2021_02-954447-001-project-angular/google/authorization',
+      'https://camt-mmit.github.io/2021_02-954447-001-project-angular/api/authorization',
   },
 };

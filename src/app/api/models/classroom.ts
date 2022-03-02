@@ -72,7 +72,12 @@ export type CourseMaterial = {
   form: Form;
 };
 
-export type classroom = {
+export type CourseMaterialSet = {
+  title: string,
+  materials: CourseMaterial[],
+}
+
+export type Classroom = {
   id: string;
   name: string;
   section: string;
@@ -88,14 +93,14 @@ export type classroom = {
   teacherGroupEmail: string;
   courseGroupEmail: string;
   teacherFolder: DriveFolder;
-  courseMaterialSets: CourseMaterial[];
+  courseMaterialSets: CourseMaterialSet[];
   guardiansEnabled: boolean;
   calendarId: string;
   gradebookSettings: GradebookSettings[];
 };
 
 export type coursesList = {
-  courses: classroom[];
+  courses: Classroom[];
   nextPageToken: string;
 };
 
@@ -103,7 +108,7 @@ export function parseDriveFolder(data: any): DriveFolder {
   return { ...data };
 }
 
-export function parseCourseMaterial(data: any): CourseMaterial {
+export function parseCourseMaterialSet(data: any): CourseMaterialSet {
   return { ...data };
 }
 
@@ -127,11 +132,11 @@ export function parseForm(data: any): Form {
   return { ...data };
 }
 
-export function parseClassroom(data: any): classroom {
+export function parseClassroom(data: any): Classroom {
   return {
     ...data,
-    courseMaterialSets: (data?.courseMaterialSets || []).map((data:any)=>parseCourseMaterial(data)),
-    gradebookSettings: (data?.gradebookSettings || []).map((data:any)=>parseGradebookSettings(data)),
+    courseMaterialSets: (data?.CourseMaterialSet || []).map((data:any)=>parseCourseMaterialSet(data)),
+    gradebookSettings: (data?.GradebookSettings || []).map((data:any)=>parseGradebookSettings(data)),
   };
 }
 

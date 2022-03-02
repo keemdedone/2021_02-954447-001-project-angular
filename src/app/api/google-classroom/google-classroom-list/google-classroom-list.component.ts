@@ -12,7 +12,6 @@ export class GoogleClassroomListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data)
     return;
   }
 

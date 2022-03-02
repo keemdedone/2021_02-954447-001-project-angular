@@ -1,5 +1,7 @@
 import { integer } from './common';
 
+/* REF = 'https://developers.google.com/classroom/reference/rest' */
+
 export type CourseState =
   | 'COURSE_STATE_UNSPECIFIED'
   | 'ACTIVE'
@@ -104,6 +106,44 @@ export type coursesList = {
   nextPageToken: string;
 };
 
+export type CourseTeacher = {
+  "courseId": string,
+  "userId": string,
+  "profile": [
+    {
+      "UserProfile" : [
+        {
+          "id": string,
+          "name": [
+            {
+              "givenName": string,
+              "familyName": string,
+              "fullName": string
+            }
+          ],
+          "emailAddress": string,
+          "photoUrl": string,
+          "permissions": [
+            {
+              "GlobalPermission" : [
+                {
+                  "permission" : 'PERMISSION_UNSPECIFIED' | 'CREATE_COURSE'
+                }
+              ]
+            }
+          ],
+          "verifiedTeacher": boolean,
+        }
+      ]
+    }
+  ]
+}
+
+export type CourseTeacherList = {
+  "teachers": CourseTeacher[],
+  "nextPageToken": string,
+}
+
 export function parseDriveFolder(data: any): DriveFolder {
   return { ...data };
 }
@@ -141,9 +181,18 @@ export function parseClassroom(data: any): Classroom {
 }
 
 export function parseCoursesList(data: any): coursesList {
-  console.log(data)
   return {
     ...data,
     courses: (data?.courses || []).map((data: any) => parseClassroom(data)),
   };
+}
+
+export function parseTeacher(data:any): CourseTeacher {
+  return {...data}
+}
+
+export function parseTeacherList(data:any): CourseTeacherList {
+  return {...data,
+    teachers: (data?.teachers || []).map((data:any) => parseTeacher(data)),
+  }
 }

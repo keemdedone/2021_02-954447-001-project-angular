@@ -10,6 +10,7 @@ const URL = 'https://classroom.googleapis.com/v1/courses';
   providedIn: 'root'
 })
 export class GoogleClassroomService {
+  data$!: Observable<coursesList>
 
   constructor(
     private readonly tokenService : GoogleTokenService,

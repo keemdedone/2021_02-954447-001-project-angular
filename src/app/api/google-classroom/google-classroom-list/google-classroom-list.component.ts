@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { coursesList } from '../../models';
+import { coursesList, CourseTeacherList } from '../../models';
 
 @Component({
   selector: 'app-google-classroom-list',
@@ -8,11 +8,13 @@ import { coursesList } from '../../models';
 })
 export class GoogleClassroomListComponent implements OnInit {
   @Input() data: coursesList | null = null ;
+  
+  @Input() data1: CourseTeacherList | null = null;
 
   constructor() { }
 
   ngOnInit(): void {
-    return;
+    return
   }
 
 }

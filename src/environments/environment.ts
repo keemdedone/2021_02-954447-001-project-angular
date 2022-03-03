@@ -9,7 +9,8 @@ export const environment = {
     client_secret: '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',
     scopes: [
       'https://www.googleapis.com/auth/classroom.courses',
-      'https://www.googleapis.com/auth/classroom.courses.readonly'
+      'https://www.googleapis.com/auth/classroom.courses.readonly',
+      'https://www.googleapis.com/auth/classroom.rosters',
     ],
     redirect_uri:
       'http://localhost:4200/api/authorization',

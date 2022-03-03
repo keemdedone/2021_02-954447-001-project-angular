@@ -6,6 +6,7 @@ export const environment = {
     scopes: [
       'https://www.googleapis.com/auth/classroom.courses',
       'https://www.googleapis.com/auth/classroom.courses.readonly',
+      'https://www.googleapis.com/auth/classroom.rosters',
     ],
     redirect_uri:
       'https://camt-mmit.github.io/2021_02-954447-001-project-angular/api/authorization',

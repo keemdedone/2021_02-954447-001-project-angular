@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GoogleClassroomService } from '../../google-classroom.service';
-import { coursesList } from '../../models';
+import { coursesList, CourseTeacherList } from '../../models';
 
 @Component({
   selector: 'app-google-classroom-list-display',
@@ -9,7 +9,8 @@ import { coursesList } from '../../models';
   styleUrls: ['./google-classroom-list-display.component.scss']
 })
 export class GoogleClassroomListDisplayComponent implements OnInit {
-  data$!: Observable<coursesList>
+  data$!: Observable<coursesList>;
+  data1$!: Observable<CourseTeacherList>;
 
   constructor(
     private readonly service: GoogleClassroomService
@@ -17,6 +18,7 @@ export class GoogleClassroomListDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.data$ = this.service.getAll();
+    this.data1$ = this.service.getTeacher();
   }
 
 }

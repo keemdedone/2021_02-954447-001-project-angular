@@ -2,6 +2,7 @@ import { integer } from './common';
 
 /* REF = 'https://developers.google.com/classroom/reference/rest' */
 
+//Course PART
 export type CourseState =
   | 'COURSE_STATE_UNSPECIFIED'
   | 'ACTIVE'
@@ -106,44 +107,48 @@ export type coursesList = {
   nextPageToken: string;
 };
 
+//Teacher PART
+export type Permission =
+  | 'PERMISSION_UNSPECIFIED'
+  | 'CREATE_COURSE';
+
+export type GlobalPermission = {
+  permission: Permission;
+}
+
+export type Permissions = {
+  GlobalPermission: GlobalPermission;
+}
+
+export type Name = {
+  givenName: string,
+  familyName: string,
+  fullName: string,
+}
+
+export type Profile = {
+  id: string,
+  name: Name,
+  emailAddress: string,
+  photoUrl: string,
+  permissions: Permissions[],
+  verifiedTeacher: boolean,
+}
+
 export type CourseTeacher = {
-  "courseId": string,
-  "userId": string,
-  "profile": [
-    {
-      "UserProfile" : [
-        {
-          "id": string,
-          "name": [
-            {
-              "givenName": string,
-              "familyName": string,
-              "fullName": string
-            }
-          ],
-          "emailAddress": string,
-          "photoUrl": string,
-          "permissions": [
-            {
-              "GlobalPermission" : [
-                {
-                  "permission" : 'PERMISSION_UNSPECIFIED' | 'CREATE_COURSE'
-                }
-              ]
-            }
-          ],
-          "verifiedTeacher": boolean,
-        }
-      ]
-    }
-  ]
+  courseId: string,
+  userId: string,
+  profile: Profile,
 }
 
 export type CourseTeacherList = {
-  "teachers": CourseTeacher[],
-  "nextPageToken": string,
+  teachers: CourseTeacher[],
+  nextPageToken: string,
 }
 
+// parse function //
+
+//course
 export function parseDriveFolder(data: any): DriveFolder {
   return { ...data };
 }
@@ -187,11 +192,37 @@ export function parseCoursesList(data: any): coursesList {
   };
 }
 
-export function parseTeacher(data:any): CourseTeacher {
+//teacher
+export function parsePermissions(data:any): Permissions {
+  return {...data,
+    GlobalPermission: parseGlobalPermission(data?.GlobalPermission)
+  }
+}
+
+export function parseGlobalPermission(data:any): GlobalPermission{
+  return {...data,
+    permission: parsePermissions(data?.permission)
+  }
+}
+
+export function parseName(data:any): Name {
   return {...data}
 }
 
+export function parseProfile(data:any): Profile {
+  return {...data,
+  name: parseName(data?.name)
+  }
+}
+
+export function parseTeacher(data:any): CourseTeacher {
+  return {...data,
+    profile: parseProfile(data?.profile || [])
+  }
+}
+
 export function parseTeacherList(data:any): CourseTeacherList {
+  console.log(data)
   return {...data,
     teachers: (data?.teachers || []).map((data:any) => parseTeacher(data)),
   }

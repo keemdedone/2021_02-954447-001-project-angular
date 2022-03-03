@@ -135,14 +135,14 @@ export type Profile = {
   verifiedTeacher: boolean,
 }
 
-export type CourseTeacher = {
+export type Teacher = {
   courseId: string,
   userId: string,
   profile: Profile,
 }
 
 export type CourseTeacherList = {
-  teachers: CourseTeacher[],
+  teachers: Teacher[],
   nextPageToken: string,
 }
 
@@ -215,7 +215,7 @@ export function parseProfile(data:any): Profile {
   }
 }
 
-export function parseTeacher(data:any): CourseTeacher {
+export function parseTeacher(data:any): Teacher {
   return {...data,
     profile: parseProfile(data?.profile || [])
   }

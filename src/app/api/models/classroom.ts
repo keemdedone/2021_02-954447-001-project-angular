@@ -222,7 +222,6 @@ export function parseTeacher(data:any): Teacher {
 }
 
 export function parseTeacherList(data:any): CourseTeacherList {
-  console.log(data)
   return {...data,
     teachers: (data?.teachers || []).map((data:any) => parseTeacher(data)),
   }

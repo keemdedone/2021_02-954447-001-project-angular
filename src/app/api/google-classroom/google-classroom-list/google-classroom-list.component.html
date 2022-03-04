@@ -1,14 +1,9 @@
 <div *ngIf="data; else loading">
-  <div *ngFor="let course of data.courses">
+  <div *ngFor="let course of data.courses" (click)="onItemClick('xx'+course.id)">
     <label>{{course.descriptionHeading}}</label>
   </div>
 </div>
 <br>
-<div *ngIf="data1; else loading">
-  <div *ngFor="let teacher of data1.teachers;let i = index">
-    {{ teacher.profile.name.fullName }}
-  </div>
-</div>
 
 <ng-template #loading>
   <h1>LOADING...</h1>

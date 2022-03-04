@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { coursesList, CourseTeacherList } from '../../models';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { coursesList } from '../../models';
 
 @Component({
   selector: 'app-google-classroom-list',
@@ -8,13 +8,16 @@ import { coursesList, CourseTeacherList } from '../../models';
 })
 export class GoogleClassroomListComponent implements OnInit {
   @Input() data: coursesList | null = null ;
-  
-  @Input() data1: CourseTeacherList | null = null;
+  @Output() itemSelect = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
     return
+  }
+
+  onItemClick(courseId:string): void {
+    this.itemSelect.emit(courseId);
   }
 
 }

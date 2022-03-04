@@ -7,7 +7,8 @@ import { GoogleClassroomListDisplayComponent } from './display/google-classroom-
 import { GoogleClassroomCreateDisplayComponent } from './display/google-classroom-create-display/google-classroom-create-display.component';
 import { GoogleClassroomListComponent } from './google-classroom/google-classroom-list/google-classroom-list.component';
 import { GoogleAuthorizationComponent } from './display/google-authorization/google-authorization.component';
-
+import { GoogleClassroomViewComponent } from './google-classroom/google-classroom-view/google-classroom-view.component';
+import { GoogleClassroomViewDisplayComponent } from './display/google-classroom-view-display/google-classroom-view-display.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { GoogleAuthorizationComponent } from './display/google-authorization/goo
     GoogleClassroomListDisplayComponent,
     GoogleClassroomCreateDisplayComponent,
     GoogleAuthorizationComponent,
+    GoogleClassroomViewComponent,
+    GoogleClassroomViewDisplayComponent,
   ],
   imports: [
     CommonModule,

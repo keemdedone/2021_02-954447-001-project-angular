@@ -1,0 +1,31 @@
+<div *ngIf="data; else loading">
+  <div *ngFor="let item of data.results" class="main-container">
+    <div class="person">
+      <p>
+        <b>ชื่อ - นามสกุล</b>
+        <span>{{ item.firstName }} {{ item.lastName }}</span>
+      </p>
+      <p>
+        <b>วัน/เดือน/ปี เกิด</b>
+        <span>{{ item.birthdate }}</span>
+      </p>
+      <p>
+        <b>ชนิดวัคซีนที่ฉีด</b>
+        <span>{{ item.vaccineName }}</span>
+      </p>
+      <p>
+        <b>จำนวนโดส</b>
+        <span>{{ item.dose }}</span> โดส
+      </p>
+      <p>
+        <b>ฉีดวันที่</b>
+        <span>{{ item.date }}</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-border text-dark mt-3" role="status"></div>
+  <span class="sr-only">Loading...</span>
+</ng-template>

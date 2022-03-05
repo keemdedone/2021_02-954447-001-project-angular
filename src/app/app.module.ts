@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleClassroomComponent } from './api/display/google-classroom/google-classroom.component';
@@ -13,24 +15,32 @@ import { GoogleConfigurationToken } from './api/models';
 import { CovidListComponent } from './covid/covid-all/covid-list/covid-list.component';
 import { CovidListPageComponent } from './covid/covid-all/covid-list-page/covid-list-page.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { PortalModule } from '@angular/cdk/portal';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    CovidListComponent,
-    CovidListPageComponent,
-  ],
+  declarations: [AppComponent, NavMenuComponent],
   imports: [
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    PortalModule,
+    LayoutModule,
+    MatButtonModule,
+    MatListModule,
   ],
-  providers: [
-    {
-      provide: GoogleConfigurationToken,
-      useValue: environment.googleConfiguration,
-    },
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,14 @@
+.main-container{
+
+  &>.person{
+    padding-top: 30px;
+
+    &>p{
+
+      &>span{
+        padding-left: 10px;
+      }
+    }
+  }
+}
+

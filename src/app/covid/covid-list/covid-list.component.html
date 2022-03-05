@@ -1,0 +1,43 @@
+<div class="container">
+  <div *ngIf="data; else loading">
+    <div *ngFor="let item of data.results">
+      <div class="date-covid mt-3 d-flex justify-content-end">
+        <h2>อัพเดตล่าสุด : {{ item.update_date }}</h2>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <div class="alert alert-danger">
+            <h1>จำนวนผู้ป่วยรายใหม่</h1>
+            <p>{{ item.new_case.toLocaleString() }} คน</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="alert alert-dark">
+            <h1>จำนวนเสียชีวิต</h1>
+            <p>{{ item.new_death.toLocaleString() }} คน</p>
+            <span>สะสม {{ item.total_death.toLocaleString() }} คน</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-info">
+            <h1>จำนวนผู้ป่วยสะสม</h1>
+            <p>{{ item.total_case.toLocaleString() }} คน</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="alert alert-success">
+            <h1>จำนวนผู้ป่วยรักษาหาย</h1>
+            <p>{{ item.new_death.toLocaleString() }} คน</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-border text-dark mt-3" role="status"></div>
+  <span class="sr-only">Loading...</span>
+</ng-template>

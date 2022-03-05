@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>รายการ</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="covid/all-day">ข้อมูลรายวัน</a>
+      <a mat-list-item routerLink="covid/list-province">ข้อมูลรายจังหวัด</a>
+      <a mat-list-item routerLink="covid/all-total">ข้อมูลทั่วประเทศ</a>
+      <a mat-list-item routerLink="covid/vaccine-list">ข้อมูลการฉีดวัคซีน</a>
+      <a mat-list-item routerLink="covid/vaccine-form">ฟอร์มการฉีดวัคซีน</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">รายการ</mat-icon>
+      </button>
+      <div class="col-md">
+        <img src="/assets/image/logo.png" class="logo" />
+      </div>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

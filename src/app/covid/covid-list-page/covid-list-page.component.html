@@ -1,0 +1,16 @@
+<div>
+  <p class="header-title mt-3">รายงานสถานการณ์ โควิด-19 รายจังหวัด</p>
+  <select
+    (change)="onProvinceChange($event)"
+    class="custom-select custom-select-lg"
+  >
+    <option value="">--- เลือกจังหวัด ---</option>
+    <option *ngFor="let province of provinces" [value]="province">
+      {{ province }}
+    </option>
+  </select>
+</div>
+<app-covid-list
+  *ngIf="selectedProvinceName"
+  [data]="data$ | async"
+></app-covid-list>
